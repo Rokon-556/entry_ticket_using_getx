@@ -1,10 +1,11 @@
 import 'package:get/get.dart';
 
+import '../controllers/ticket_controller.dart';
+
 
 class TicketBindings extends Bindings {
   @override
   void dependencies() {
-    // Get.put(TicketController());
-    // Get.lazyPut<TicketController>(() => TicketController());
+    Get.put(TicketController());
   }
 }

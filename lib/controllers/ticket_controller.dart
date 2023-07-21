@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 import '../models/ticket.dart';
 
 class TicketController extends GetxController{
-    RxBool isDataLoading = true.obs;
+    RxBool isDataLoading = false.obs;
   // RxList<Ticket> tickets = <Ticket>[].obs;
   List<Item> tickets = [];
 
@@ -18,6 +18,7 @@ class TicketController extends GetxController{
   }
 
   Future<void> getTickets() async{
+    isDataLoading.value = true;
     final dio = Dio();
     
     const url = "http://apps.babuland.org/bblapi/babuland/v1/mock_ticket_ms";
@@ -29,9 +30,10 @@ class TicketController extends GetxController{
          for(var ticket in data){
           tickets.add(Item.fromJson(ticket));
          }
-         log('length2 : ${tickets.length}');
          update();
+         isDataLoading.value = false;
     }
+    isDataLoading.value = false;
     }catch(e){
       log(e.toString());
     }
