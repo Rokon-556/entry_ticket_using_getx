@@ -6,8 +6,7 @@ import 'package:get/get.dart';
 import '../models/ticket.dart';
 
 class TicketController extends GetxController{
-    RxBool isDataLoading = false.obs;
-  // RxList<Ticket> tickets = <Ticket>[].obs;
+  RxBool isDataLoading = false.obs;
   List<Item> tickets = [];
 
 

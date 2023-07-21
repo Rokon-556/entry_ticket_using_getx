@@ -54,81 +54,84 @@ class _MyTicketScreenState extends State<MyTicketScreen> {
                       ? const Expanded(
                           child: Center(child: CircularProgressIndicator()))
                       : Expanded(
-                          child: ListView.builder(
-                            itemBuilder: (context, index) {
-                              return Padding(
-                                padding: const EdgeInsets.all(15.0),
-                                child: Container(
-                                  color: const Color(0xfffbe5ae),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                          border: Border(
-                                              bottom: const BorderSide(
-                                                  color: Colors.red, width: 3),
-                                              left: BorderSide(
-                                                  color: Get.theme.primaryColor,
-                                                  width: 3),
-                                              right: const BorderSide(
-                                                  color: Colors.blue, width: 3),
-                                              top: const BorderSide(
-                                                  color: Colors.green,
-                                                  width: 3))),
-                                      child: Row(children: [
-                                        Expanded(
-                                          flex: 2,
-                                          child: BranchSectionWidget(),
-                                        ),
-                                        Expanded(
-                                          flex: 1,
-                                          child: Column(
-                                            children: [
-                                              Container(
-                                                decoration: const BoxDecoration(
-                                                    color: Color(0xfffbe5ae),
-                                                    shape: BoxShape.circle),
-                                              ),
-                                              Column(
-                                                children: [
-                                                  for (int i = 1; i <= 48; i++)
-                                                    i.isEven
-                                                        ? Container(
-                                                            width: 4,
-                                                            height: 4,
-                                                            decoration: BoxDecoration(
-                                                                color: Colors
-                                                                    .white,
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            2)),
-                                                          )
-                                                        : const SizedBox(
-                                                            height: 3),
-                                                ],
-                                              ),
-                                              Container(
-                                                decoration: const BoxDecoration(
-                                                    color: Colors.black,
-                                                    shape: BoxShape.circle),
-                                              ),
-                                            ],
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal:10.0),
+                            child: ListView.builder(
+                              itemBuilder: (context, index) {
+                                return Padding(
+                                  padding: const EdgeInsets.all(15.0),
+                                  child: Container(
+                                    color: const Color(0xfffbe5ae),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                            border: Border(
+                                                bottom: const BorderSide(
+                                                    color: Colors.red, width: 3),
+                                                left: BorderSide(
+                                                    color: Get.theme.primaryColor,
+                                                    width: 3),
+                                                right: const BorderSide(
+                                                    color: Colors.blue, width: 3),
+                                                top: const BorderSide(
+                                                    color: Colors.green,
+                                                    width: 3))),
+                                        child: Row(children: [
+                                          Expanded(
+                                            flex: 2,
+                                            child: BranchSectionWidget(),
                                           ),
-                                        ),
-                                        UserSectionWidget(
-                                          myTicketController:
-                                              myTicketController,
-                                          item: myTicketController.tickets,
-                                          index: index,
-                                        )
-                                      ]),
+                                          Expanded(
+                                            flex: 1,
+                                            child: Column(
+                                              children: [
+                                                // Container(
+                                                //   decoration: const BoxDecoration(
+                                                //       color: Color(0xfffbe5ae),
+                                                //       shape: BoxShape.circle),
+                                                // ),
+                                                Column(
+                                                  children: [
+                                                    for (int i = 1; i <= 48; i++)
+                                                      i.isEven
+                                                          ? Container(
+                                                              width: 4,
+                                                              height: 4,
+                                                              decoration: BoxDecoration(
+                                                                  color: Colors
+                                                                      .white,
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              2)),
+                                                            )
+                                                          : const SizedBox(
+                                                              height: 3),
+                                                  ],
+                                                ),
+                                                // Container(
+                                                //   decoration: const BoxDecoration(
+                                                //       color: Colors.black,
+                                                //       shape: BoxShape.circle),
+                                                // ),
+                                              ],
+                                            ),
+                                          ),
+                                          UserSectionWidget(
+                                            myTicketController:
+                                                myTicketController,
+                                            item: myTicketController.tickets,
+                                            index: index,
+                                          )
+                                        ]),
+                                      ),
                                     ),
                                   ),
-                                ),
-                              );
-                            },
-                            itemCount: myTicketController.tickets.length,
+                                );
+                              },
+                              itemCount: myTicketController.tickets.length,
+                            ),
                           ),
                         ),
                   footerSection(), // const Spacer(),
