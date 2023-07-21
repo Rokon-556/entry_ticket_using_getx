@@ -4,7 +4,6 @@ import 'package:tickets/view/my_ticket_screen.dart';
 
 import '../controllers/ticket_controller.dart';
 
-
 class TicketScreen extends StatefulWidget {
   const TicketScreen({super.key});
 
@@ -20,9 +19,6 @@ class _TicketScreenState extends State<TicketScreen> {
     return Scaffold(
         appBar: AppBar(
           title: const Text('TICKETS'),
-          centerTitle: true,
-          backgroundColor: Theme.of(context).primaryColor,
-          leading: const Icon(Icons.arrow_back),
         ),
         body: GetBuilder<TicketController>(
           init: TicketController(),
@@ -32,122 +28,116 @@ class _TicketScreenState extends State<TicketScreen> {
                 ? const Center(
                     child: CircularProgressIndicator(),
                   )
-                : ListView.builder(
-                    itemBuilder: (context, index) {
-                      return Card(
-                        elevation: 3,
-                        child: Container(
-                          height: 200,
-                          width: double.infinity,
-                          margin: const EdgeInsets.all(20),
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                                color: Theme.of(context).primaryColor),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.stretch,
-                              children: [
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    // Container(
-                                    //   child: CircleAvatar(
-                                    //     child: Image.asset('assets/images/logo.png'),
-                                    //   ),
-                                    // ),
-                                    Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      children: [
-                                        Text(
-                                          'This Is Your Ticket',
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .titleMedium,
-                                        ),
-                                        Text(
-                                          'Order ID: ${controller.tickets[index].pk}',
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .bodyMedium,
-                                        ),
-                                        Text(
-                                          'Ticket Price: ${controller.tickets[index].total}',
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .bodyLarge,
-                                        ),
-                                        ElevatedButton(
-                                          onPressed: () {
-                                            Get.to(() => MyTicketScreen(
-                                                ticket: controller
-                                                    .tickets[index]));
-                                            // Get.toNamed(AppRoutes.MY_TICKET_SCREEN,arguments: controller.tickets[index].pk);
-                                          },
-                                          style: ElevatedButton.styleFrom(
-                                              backgroundColor:
-                                                  Theme.of(context)
-                                                      .primaryColor),
-                                          child: Text(
-                                            'Activate',
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .bodyLarge,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    // Container(
-                                    //   child: CircleAvatar(
-                                    //     child: Image.asset('assets/images/qr3.png'),
-                                    //   ),
-                                    // )
-                                  ],
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 10.0),
-                                  child: Row(
+                : Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: ListView.builder(
+                      itemBuilder: (context, index) {
+                        return Card(
+                          elevation: 3,
+                          child: Container(
+                            margin: const EdgeInsets.all(12),
+                            decoration: BoxDecoration(
+                              border: Border(
+                                  bottom: const BorderSide(
+                                      color: Colors.red, width: 2),
+                                  left: BorderSide(
+                                      color: Get.theme.primaryColor, width: 2),
+                                  right: const BorderSide(
+                                      color: Colors.blue, width: 2),
+                                  top: const BorderSide(
+                                      color: Colors.green, width: 2)),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                crossAxisAlignment: CrossAxisAlignment.stretch,
+                                children: [
+                                  Row(
                                     mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                                        MainAxisAlignment.spaceAround,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
-                                      Text(
-                                          'Purchase Date:${controller.tickets[index].sellDate}'),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
+                                      CircleAvatar(
+                                        child: Image.asset(
+                                            'assets/images/babuland.png'),
+                                      ),
+                                      Column(
                                         children: [
-                                          Text(
-                                            'Details',
+                                          const Text(
+                                            'This is your Entry Ticket',
                                             style: TextStyle(
-                                                color: Theme.of(context)
-                                                    .primaryColor),
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.bold),
                                           ),
-                                          IconButton(
-                                            onPressed: () {},
-                                            icon: Icon(
-                                              Icons.arrow_circle_right,
-                                              color: Theme.of(context)
-                                                  .primaryColor,
+                                          const SizedBox(height: 2),
+                                          Text(
+                                              'Order ID: ${controller.tickets[index].pk}',
+                                              style: const TextStyle(fontSize: 13)),
+                                          const SizedBox(height: 2),
+                                          Text(
+                                              'Ticket Price: ${controller.tickets[index].total}',
+                                              style: const TextStyle(fontSize: 15)),
+                                          const SizedBox(height: 2),
+                                          SizedBox(
+                                            width: Get.width * 0.35,
+                                            child: ElevatedButton(
+                                              onPressed: () {
+                                                Get.to(() => MyTicketScreen(
+                                                    ticket: controller
+                                                        .tickets[index]));
+                                              },
+                                              child: const Text(
+                                                'Active',
+                                                style: TextStyle(fontSize: 18),
+                                              ),
                                             ),
                                           ),
                                         ],
+                                      ),
+                                      CircleAvatar(
+                                        child: Image.asset(
+                                            'assets/images/qr2.png'),
                                       )
                                     ],
                                   ),
-                                )
-                              ],
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        left: 10, right: 10, top: 10),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                            'Purchase Date:${controller.tickets[index].sellDate}'),
+                                        Row(
+                                          children: [
+                                            Text(
+                                              'Details',
+                                              style: TextStyle(
+                                                  color: Theme.of(context)
+                                                      .primaryColor),
+                                            ),
+                                            Icon(
+                                              Icons.arrow_circle_right,
+                                              size: 18,
+                                              color: Get.theme.primaryColor,
+                                            )
+                                          ],
+                                        )
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
                             ),
                           ),
-                        ),
-                      );
-                    },
-                    itemCount: controller.tickets.length,
+                        );
+                      },
+                      itemCount: controller.tickets.length,
+                    ),
                   );
           },
         ));

@@ -20,6 +20,20 @@ class MyApp extends StatelessWidget {
       initialRoute: AppRoutes.TICKET_SCREEN,
       initialBinding: TicketBindings(),
       getPages: AppPages.list,
+      theme: ThemeData(
+        dividerColor: const Color(0XFFFF8C1A),
+          appBarTheme: const AppBarTheme(
+            color: Color(0XFFFF8C1A),
+            centerTitle: true,
+          ),
+          primaryColor: const Color(0XFFFF8C1A),
+          progressIndicatorTheme:
+              const ProgressIndicatorThemeData(color: Color(0XFFFF8C1A)),
+          elevatedButtonTheme: ElevatedButtonThemeData(
+              style: ButtonStyle(
+                foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                  backgroundColor:
+                      MaterialStateProperty.all<Color>(const Color(0XFFFF8C1A))))),
     );
   }
 }
